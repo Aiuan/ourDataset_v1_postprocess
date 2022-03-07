@@ -1,0 +1,7 @@
+/matlab/organize/runs/*
+/matlab/organize/filted_LeopardCamera1_timestamps/*
+/matlab/organize/LeopardCamera1_timestamps/*
+/matlab/organize/OCULiiRadar_timestamps/*
+/matlab/organize/TIRadar_timestamps/*
+/matlab/organize/VelodyneLidar_timestamps/*
+/python/select_groups_by_people/runs/*
