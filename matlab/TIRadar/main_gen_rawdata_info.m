@@ -151,21 +151,33 @@ for groupFolderIndex = 3:length(groupFolders)
         % 读取adc数据
         % read raw data
         adcDatas = readAdcData(subFramesInfo, i_globalSubFrame, parameter_files_path);
-        % calibrate raw data
-        adcDatas = calibAdcData(adcDatas, calibFileName, parameter_files_path);
-               
         if SAVE_ON
             % samplePerChirp, loopPerFrame, numRX, chirpPerLoop, real/imag, subFrameId 
-            data = zeros(size(adcDatas(1).adcData, 1), size(adcDatas(1).adcData, 2),...
-                size(adcDatas(1).adcData, 3), size(adcDatas(1).adcData, 4), 2, 2, 'int16');
+            data = zeros(size(adcDatas(1).rawAdcData, 1), size(adcDatas(1).rawAdcData, 2),...
+                size(adcDatas(1).rawAdcData, 3), size(adcDatas(1).rawAdcData, 4), 2, 2, 'int16');
             for i_subFrame = 0 : NumSubFramesPerFrame - 1
-                data(:,:,:,:,1,i_subFrame+1) = real(adcDatas(i_subFrame + 1).adcData);
-                data(:,:,:,:,2,i_subFrame+1) = imag(adcDatas(i_subFrame + 1).adcData);
+                data(:,:,:,:,1,i_subFrame+1) = real(adcDatas(i_subFrame + 1).rawAdcData);
+                data(:,:,:,:,2,i_subFrame+1) = imag(adcDatas(i_subFrame + 1).rawAdcData);
             end
 
             data_path = fullfile(outputFolder, strcat(sprintf('%.3f', round(double(timestamp_radar)/1e6, 3)), ".adcdata.bin"));
             adcdata_save(data_path, data);            
         end   
+
+%         % calibrate raw data
+%         adcDatas = calibAdcData(adcDatas, calibFileName, parameter_files_path);
+%         if SAVE_ON
+%             samplePerChirp, loopPerFrame, numRX, chirpPerLoop, real/imag, subFrameId 
+%             data = zeros(size(adcDatas(1).adcData, 1), size(adcDatas(1).adcData, 2),...
+%                 size(adcDatas(1).adcData, 3), size(adcDatas(1).adcData, 4), 2, 2, 'int16');
+%             for i_subFrame = 0 : NumSubFramesPerFrame - 1
+%                 data(:,:,:,:,1,i_subFrame+1) = real(adcDatas(i_subFrame + 1).adcData);
+%                 data(:,:,:,:,2,i_subFrame+1) = imag(adcDatas(i_subFrame + 1).adcData);
+%             end
+% 
+%             data_path = fullfile(outputFolder, strcat(sprintf('%.3f', round(double(timestamp_radar)/1e6, 3)), ".adcdata.bin"));
+%             adcdata_save(data_path, data);            
+%         end   
         
         %% 处理下一帧，跳过NumSubFramesPerFrame个子帧
         i_globalSubFrame = i_globalSubFrame +NumSubFramesPerFrame;
