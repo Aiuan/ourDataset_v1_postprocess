@@ -1,7 +1,7 @@
 clear; close all; clc;
 
 % ====================user's modify start=====================
-exp = '20211025_1';
+exp = '20211027_2';
 outputFolder = fullfile("/home/aify/Desktop/ourDataset/preprocess", exp, 'TIRadar_adc');
 if ~exist(outputFolder, "dir")
     fprintf("Create outputfolder: %s\n", outputFolder);

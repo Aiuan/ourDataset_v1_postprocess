@@ -33,6 +33,8 @@ function dopplerFFTOut = dopplerFFT(rangeFFTOut, parameter_files_path, dopplerFF
                 else
                     fftOutput   = fftshift(fftOutput, 2);
                 end
+            else
+                fftOutput   = fftshift(fftOutput, 2);
             end
             
             % populate in the data cube

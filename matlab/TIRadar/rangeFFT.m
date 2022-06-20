@@ -7,9 +7,10 @@ function rangeFFTOut = rangeFFT(adcData, parameter_files_path, rangeFFTFilter_ON
             % vectorized version
             inputMat = adcData(:, :, i_rx, i_tx);
             
-            if rangeFFTFilter_ON
-                % DC offset compensation
-                inputMat = bsxfun(@minus, inputMat, mean(inputMat));
+            % DC offset compensation
+            inputMat = bsxfun(@minus, inputMat, mean(inputMat));
+
+            if rangeFFTFilter_ON                
                 % apply range-domain windowing
                 rangeWindowCoeff = getPara(parameter_files_path, 'rangeProcCascade_rangeWindowCoeff');
                 numAdcSamplePerChirp = getPara(parameter_files_path, 'rangeProcCascade_numAdcSamplePerChirp');

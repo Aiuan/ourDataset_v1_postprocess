@@ -222,17 +222,17 @@ function [N_obj, Ind_obj, noise_obj, CFAR_SNR] = CFAR_OS_Range(parameter_file_pa
 
 
     %获取每个阵列的噪声方差系数
-    for i_obj = 1:N_obj %每个目标
-        ind_range = Ind_obj(i_obj,1); %目标在sig的索引
-        ind_Dop = Ind_obj(i_obj,2); %第几个循环
-        if ind_range <= gaptot %左边界参考窗处理
-            cellInd = [ind_range+gapNum+1:ind_range+gaptot ind_range+gapNum+1:ind_range+gaptot];
-        elseif ind_range >= M_samp-gaptot+1 %右边界参考窗处理
-            cellInd = [ind_range-gaptot:ind_range-gapNum-1 ind_range-gaptot:ind_range-gapNum-1];
-        else%中间边界参考窗处理
-            cellInd = [ind_range-gaptot:ind_range-gapNum-1 ind_range+gapNum+1:ind_range+gaptot];   
-        end
-    end
+%     for i_obj = 1:N_obj %每个目标
+%         ind_range = Ind_obj(i_obj,1); %目标在sig的索引
+%         ind_Dop = Ind_obj(i_obj,2); %第几个循环
+%         if ind_range <= gaptot %左边界参考窗处理
+%             cellInd = [ind_range+gapNum+1:ind_range+gaptot ind_range+gapNum+1:ind_range+gaptot];
+%         elseif ind_range >= M_samp-gaptot+1 %右边界参考窗处理
+%             cellInd = [ind_range-gaptot:ind_range-gapNum-1 ind_range-gaptot:ind_range-gapNum-1];
+%         else%中间边界参考窗处理
+%             cellInd = [ind_range-gaptot:ind_range-gapNum-1 ind_range+gapNum+1:ind_range+gaptot];   
+%         end
+%     end
     
 end
 

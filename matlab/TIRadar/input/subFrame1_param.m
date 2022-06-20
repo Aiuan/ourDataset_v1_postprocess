@@ -13,7 +13,7 @@ adcStartTimeConst = 2.720000e-06; %s
 chirpRampEndTime = 1.432000e-05; %s 
 
 %master advancedFrameChirp parameters: 
-frameCount = 1200; 
+frameCount = 5; 
 NumSubFrames = 2; 
 %current subFrame advancedFrameChirp parameters: 
 ChirpStartIdx = 12; 
@@ -215,8 +215,8 @@ CFAR_OS_discardCellRight   = 20;               % Number of range bins to discard
 CFAR_OS_numRxAnt           = length(RxForMIMOProcess);
 CFAR_OS_TDM_MIMO_numTX     = length(TxForMIMOProcess);
 CFAR_OS_antenna_azimuthonly = antenna_azimuthonly; %virtual channel ID only for unique azimuth ID
-CFAR_OS_minDisApplyVmaxExtend = 10; % meter, within this range, do not apply max velocity extension
-CFAR_OS_applyVmaxExtend = 0;
+CFAR_OS_minDisApplyVmaxExtend = 5; % meter, within this range, do not apply max velocity extension
+CFAR_OS_applyVmaxExtend = 1;
 
 %find the overlap antenna ID that can be used for phase compensation
 TX_ID_MIMO = repmat(1:length(TxForMIMOProcess),length(RxForMIMOProcess),1);
