@@ -4,7 +4,7 @@ import shutil
 
 ourDataset_path = '/media/ourDataset/v1.0_label'
 preprocess_path = '/media/ourDataset/preprocess'
-group_queries = ['20211025_1', '20211025_2', '20211026_2', '20211027_1']
+group_queries = ['20211025_1', '20211025_2', '20211026_2', '20211027_1', '20211027_2']
 
 
 def log(text):
